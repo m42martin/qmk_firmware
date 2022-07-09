@@ -2,36 +2,10 @@
 #ifdef AUDIO_ENABLE
 #include "muse.h"
 #endif
+
 #include "eeprom.h"
-#include "keymap_german.h"
-#include "keymap_nordic.h"
-#include "keymap_french.h"
-#include "keymap_spanish.h"
-#include "keymap_hungarian.h"
-#include "keymap_swedish.h"
-#include "keymap_br_abnt2.h"
-#include "keymap_canadian_multilingual.h"
-#include "keymap_german_ch.h"
-#include "keymap_jp.h"
-#include "keymap_korean.h"
-#include "keymap_bepo.h"
-#include "keymap_italian.h"
-#include "keymap_slovenian.h"
-#include "keymap_lithuanian_azerty.h"
-#include "keymap_danish.h"
-#include "keymap_norwegian.h"
-#include "keymap_portuguese.h"
 #include "keymap_contributions.h"
-#include "keymap_czech.h"
-#include "keymap_romanian.h"
-#include "keymap_russian.h"
-#include "keymap_uk.h"
-#include "keymap_estonian.h"
-#include "keymap_belgian.h"
 #include "keymap_us_international.h"
-#include "keymap_croatian.h"
-#include "keymap_turkish_q.h"
-#include "keymap_slovak.h"
 
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
@@ -70,47 +44,53 @@ enum planck_layers {
   _LOWER,
   _RAISE,
   _ADJUST,
-  _LAYER4,
+  _NUMPAD4,
 };
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define KC_PC_P KC_PC_PASTE
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+  // clang format-off
+
   [_BASE] = LAYOUT_planck_grid(
-    KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_P,           KC_Y,           TG(1),          TG(2),          KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           
-    KC_A,           KC_O,           KC_E,           KC_U,           KC_I,           KC_QUES,        KC_MINUS,       KC_D,           KC_H,           KC_T,           KC_N,           KC_S,           
-    MT(MOD_LSFT, KC_SCOLON),KC_Q,           KC_J,           KC_K,           KC_X,           KC_SCOLON,      KC_ENTER,       KC_B,           KC_M,           KC_W,           KC_V,           KC_Z,           
-    KC_LCTRL,       KC_LGUI,        KC_LALT,        KC_BSPACE,      KC_ESCAPE,      OSM(MOD_LSFT),  KC_NO,          KC_ENTER,       KC_SPACE,       KC_TAB,         KC_LALT,        KC_PSCREEN
+    _SQUOT_,    _COMMA_,    __DOT__,	___P___,    ___Y___,    _tog_1_,        _tog_2_,    ___F___,    ___G___,    ___C___,    ___R___,    ___L___,
+    ___A___,    ___O___,    ___E___,	___U___,    ___I___,    _QUEST_,        _MINUS_,    ___D___,    ___H___,    ___T___,    ___N___,    ___S___,
+    _m_SEMI,	___Q___,	___J___,    ___K___,    ___X___,    _SCOLN_,        _ENTER_,    ___B___,    ___M___,    ___W___,    ___V___,    ___Z___,
+    _LCTRL_,    _LGUI__,    _LALT__,	_BKSPC_,    __ESC__,    _LEADR_,	    _NO_OP_,    _ENTER_,    _SPACE_,    __TAB__,    _LALT__,    _PRINT_
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
-    KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_DLR,         KC_TRANSPARENT, KC_PERC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_HOME,        
-    KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_HASH,        KC_COMMA,       KC_TILD,        KC_UNDS,        KC_PLUS,        KC_LCBR,        KC_RCBR,        KC_END,         
-    KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_AT,          KC_EXLM,        KC_CIRC,        KC_SLASH,       KC_PIPE,        KC_LBRACKET,    KC_RBRACKET,    KC_PGUP,        
-    KC_PC_CUT,      KC_PC_COPY,     KC_PC_PASTE,    KC_WWW_BACK,    KC_WWW_FORWARD, KC_TRANSPARENT, KC_NO,          ST_MACRO_0,     ST_MACRO_1,     ST_MACRO_2,     ST_MACRO_3,     KC_PGDOWN
+    __F01__,    __F02__,    __F03__,    __F04__,    _DOLLR_,    ________,       _PERCT_,    _AMPRS_,    _ASTER_,    KC_LPRN,    KC_RPRN,        KC_HOME,
+    __F05__,    __F06__,    __F07__,    __F08__,    _HASH__,    _COMMA_,        _TILDE_,    _UNDRS_,    _PLUS__,    KC_LCBR,    KC_RCBR,        KC_END,
+    __F09__,    __F10__,    __F11__,    __F12__,    __AT___,    _EXCLM_,        KC_CIRC,    _SLASH_,    _PIPE__,    KC_LBRACKET,KC_RBRACKET,    KC_PGUP,
+    PC_CUT_,    PC_COPY,    PC_PSTE,    _WWW_B_,    _WWW_F_,    ________,       _NO_OP_,    ST_MACRO_0, ST_MACRO_1, ST_MACRO_2, ST_MACRO_3,     KC_PGDOWN
   ),
 
   [_RAISE] = LAYOUT_planck_grid(
-    KC_DQUO,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(0),          TT(4),          KC_LPRN,        KC_RPRN,        KC_AMPR,        KC_ASTR,        KC_LPRN,        
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LBRACKET,    KC_RBRACKET,    KC_DLR,         KC_PERC,        KC_CIRC,        
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_4,     ST_MACRO_5,     KC_LCBR,        KC_RCBR,        KC_EXLM,        KC_AT,          KC_HASH,        
-    WEBUSB_PAIR,    KC_PC_CUT,      KC_PC_COPY,     KC_PC_PASTE,    KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_LABK,        KC_RABK,        KC_PIPE,        KC_RPRN,        KC_TILD
+    KC_DQUO,        ________,       ________,           ________,       ________,       TO(0),                  TT(4),              KC_LPRN,            KC_RPRN,        KC_AMPR,        KC_ASTR,        KC_LPRN,
+    ________,       ________,       ________,           ________,       ________,       ________,               ________,           KC_LBRACKET,        KC_RBRACKET,    KC_DLR,         KC_PERC,        KC_CIRC,
+    ________,       ________,       ________,           ________,       ________,       ST_MACRO_4,             ST_MACRO_5,         KC_LCBR,            KC_RCBR,        KC_EXLM,        KC_AT,          KC_HASH,
+    WEBUSB_PAIR,    KC_PC_CUT,      KC_PC_COPY,         KC_PC_PASTE,    ________,       ________,               KC_NO,              KC_LABK,            KC_RABK,        KC_PIPE,        KC_RPRN,        KC_TILD
   ),
 
   [_ADJUST] = LAYOUT_planck_grid(
-    AU_ON,          AU_OFF,         AU_TOG,         KC_TRANSPARENT, KC_TRANSPARENT, TO(0),          TO(4),          RGB_TOG,        RGB_SPD,        RGB_VAD,        RGB_SAD,        HSV_186_176_220,
-    MU_ON,          MU_OFF,         MU_TOG,         MU_MOD,         KC_TRANSPARENT, KC_MEDIA_NEXT_TRACK,KC_AUDIO_VOL_DOWN,TOGGLE_LAYER_COLOR,RGB_SPI,        RGB_VAI,        RGB_SAI,        HSV_141_246_216,
-    DYN_REC_START1, DYN_REC_STOP,   DYN_MACRO_PLAY1,KC_TRANSPARENT, KC_TRANSPARENT, KC_MEDIA_PLAY_PAUSE,KC_AUDIO_VOL_UP,KC_TRANSPARENT, RGB_SLD,        RGB_HUD,        KC_TRANSPARENT, HSV_118_221_236,
-    DYN_REC_START2, DYN_REC_STOP,   DYN_MACRO_PLAY2,KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, RGB_MOD,        RGB_HUI,        KC_TRANSPARENT, HSV_77_255_218
+    AU_ON,          AU_OFF,         AU_TOG,             ________,       ________,       TO(0),                  TO(4),              RGB_TOG,            RGB_SPD,        RGB_VAD,        RGB_SAD,        HSV_186_176_220,
+    MU_ON,          MU_OFF,         MU_TOG,             MU_MOD,         ________,       KC_MEDIA_NEXT_TRACK,    KC_AUDIO_VOL_DOWN,  TOGGLE_LAYER_COLOR, RGB_SPI,        RGB_VAI,        RGB_SAI,        HSV_141_246_216,
+    DYN_REC_START1, DYN_REC_STOP,   DYN_MACRO_PLAY1,    ________,       ________,       KC_MEDIA_PLAY_PAUSE,    KC_AUDIO_VOL_UP,    ________,           RGB_SLD,        RGB_HUD,        ________,       HSV_118_221_236,
+    DYN_REC_START2, DYN_REC_STOP,   DYN_MACRO_PLAY2,    ________,       ________,       ________,               KC_NO,              ________,           RGB_MOD,        RGB_HUI,        ________,       HSV_77_255_218
   ),
 
-  [_LAYER4] = LAYOUT_planck_grid(
-    KC_KP_SLASH,    KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_BSPACE,      TO(0),          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_KP_ASTERISK, KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_ESCAPE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_KP_PLUS,     KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_COMMA,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_UP,          KC_TRANSPARENT, 
-    KC_KP_MINUS,    KC_KP_DOT,      KC_KP_0,        KC_EQUAL,       KC_KP_ENTER,    KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_RIGHT
+  [_NUMPAD4] = LAYOUT_planck_grid(
+    KC_KP_SLASH,    KC_KP_7,        KC_KP_8,            KC_KP_9,        KC_BSPACE,      TO(0),                  ________,           ________,           ________,       ________        ________        ________,
+    KC_KP_ASTERISK, KC_KP_4,        KC_KP_5,            KC_KP_6,        KC_ESCAPE,      ________,               ________,           ________,           ________,       ________        ________        ________,
+    KC_KP_PLUS,     KC_KP_1,        KC_KP_2,            KC_KP_3,        KC_KP_COMMA,    ________,               ________,           ________,           ________,       ________        KC_UP,          ________,
+    KC_KP_MINUS,    KC_KP_DOT,      KC_KP_0,            KC_EQUAL,       KC_KP_ENTER,    ________,               KC_NO,              ________,           ________,       KC_LEFT,        KC_DOWN,        KC_RIGHT
   ),
+
+  // clang format-on
 
 };
 
@@ -170,80 +150,50 @@ void rgb_matrix_indicators_user(void) {
       break;
    default:
     if (rgb_matrix_get_flags() == LED_FLAG_NONE)
-      rgb_matrix_set_color_all(0, 0, 0);
+        rgb_matrix_set_color_all(0, 0, 0);
     break;
   }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case ST_MACRO_0:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_LALT) SS_DELAY(100) SS_TAP(X_5));
-
-    }
-    break;
-    case ST_MACRO_1:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_LALT) SS_DELAY(100) SS_TAP(X_0));
-
-    }
-    break;
-    case ST_MACRO_2:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_LALT) SS_DELAY(100) SS_TAP(X_9));
-
-    }
-    break;
-    case ST_MACRO_3:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_LALT) SS_DELAY(100) SS_TAP(X_8));
-
-    }
-    break;
-    case ST_MACRO_4:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_LCTRL) SS_TAP(X_RALT) SS_TAP(X_9) SS_TAP(X_6) ));
-
-    }
-    break;
-    case ST_MACRO_5:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_LCTRL) SS_TAP(X_RALT) SS_TAP(X_9) SS_TAP(X_6) ));
-
-    }
-    break;
-    case RGB_SLD:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-      }
-      return false;
-    case HSV_186_176_220:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-        rgblight_sethsv(186,176,220);
-      }
-      return false;
-    case HSV_141_246_216:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-        rgblight_sethsv(141,246,216);
-      }
-      return false;
-    case HSV_118_221_236:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-        rgblight_sethsv(118,221,236);
-      }
-      return false;
-    case HSV_77_255_218:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-        rgblight_sethsv(77,255,218);
-      }
-      return false;
-  }
+/*     case ST_MACRO_0:
+ *     if (record->event.pressed) {
+ *       SEND_STRING(SS_TAP(X_LALT) SS_DELAY(100) SS_TAP(X_5));
+ *
+ *     }
+ *     break;
+ *     case ST_MACRO_1:
+ *     if (record->event.pressed) {
+ *       SEND_STRING(SS_TAP(X_LALT) SS_DELAY(100) SS_TAP(X_0));
+ *
+ *     }
+ *     break;
+ *     case ST_MACRO_2:
+ *     if (record->event.pressed) {
+ *       SEND_STRING(SS_TAP(X_LALT) SS_DELAY(100) SS_TAP(X_9));
+ *
+ *     }
+ *     break;
+ *     case ST_MACRO_3:
+ *     if (record->event.pressed) {
+ *       SEND_STRING(SS_TAP(X_LALT) SS_DELAY(100) SS_TAP(X_8));
+ *
+ *     }
+ *     break;
+ *     case ST_MACRO_4:
+ *     if (record->event.pressed) {
+ *       SEND_STRING(SS_LALT(SS_TAP(X_LCTRL) SS_TAP(X_RALT) SS_TAP(X_9) SS_TAP(X_6) ));
+ *
+ *     }
+ *     break;
+ *     case ST_MACRO_5:
+ *     if (record->event.pressed) {
+ *       SEND_STRING(SS_LALT(SS_TAP(X_LCTRL) SS_TAP(X_RALT) SS_TAP(X_9) SS_TAP(X_6) ));
+ *
+ *     } */
   return true;
+    }
 }
 
 #ifdef AUDIO_ENABLE
@@ -289,6 +239,57 @@ void encoder_update(bool clockwise) {
     }
 }
 
+
+LEADER_EXTERNS();
+
+// Declare a boolean variable to keep track of whether any sequence
+// will have been matched.
+bool did_leader_succeed;
+
+void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    // Initialize did_leader_succeed as well as leading to be false
+    did_leader_succeed = leading = false;
+
+    // SEQ_ONE_KEY,
+    // SEQ_TWO_KEYS,
+    // SEQ_THREE_KEYS,
+    // SEQ_FOUR_KEYS,
+    // SEQ_FIVE_KEYS.
+
+    // Replace the sequences below with your own sequences.
+    SEQ_ONE_KEY(KC_T) {
+      // When I press KC_LEAD and then T, this sends CTRL + SHIFT + T
+      SEND_STRING(SS_LCTRL(SS_LSFT("t")));
+    }
+    // Note: This is not an array, you don't need to put any commas
+    // or semicolons between sequences.
+    SEQ_TWO_KEYS(KC_N, KC_T) {
+      // When I press KC_LEAD and then N followed by T, this sends CTRL + T
+      SEND_STRING(SS_LCTRL("t"));
+    }
+
+    leader_end();
+  }
+}
+
+void leader_start(void) {
+  // Add your code to run when pressing the leader key here
+}
+
+void leader_end(void) {
+  // Add your code to run when a leader key sequence ends here
+  if (did_leader_succeed) {
+    // If any sequence was matched, did_leader_succeed will have
+    // been set to true up in the matrix_scan_user function.
+    // Put your code for a matched leader key sequence here.
+  } else {
+    // If no sequence was matched, did_leader_succeed will not
+    // have been set to true anywhere, so we'll end up here.
+    // Put your code for an unmatched leader key sequence here.
+  }
+}
+
 void matrix_scan_user(void) {
 #ifdef AUDIO_ENABLE
     if (muse_mode) {
@@ -319,5 +320,3 @@ bool music_mask_user(uint16_t keycode) {
 uint32_t layer_state_set_user(uint32_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
-
-
