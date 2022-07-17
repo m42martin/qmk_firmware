@@ -43,38 +43,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // clang format-off
 
   [_BASE] = LAYOUT_planck_grid(
-    SN_QUOTE, _COMMA__, _DOT____, ___P____, ___Y____, _tog__1_, _tog__2_, ___F____, ___G____, ___C____, ___R____, ___L____,
-    ___A____, ___O____, ___E____, ___U____, ___I____, _QUESTN_, _MINUS__, ___D____, ___H____, ___T____, ___N____, ___S____,
-    _m_SEMI_, ___Q____, ___J____, ___K____, ___X____, _SMCOLN_, _ENTER__, ___B____, ___M____, ___W____, ___V____, ___Z____,
-    _L_CTRL_, _L_GUI__, _L_ALT__, _BKSPACE, _ESCAPE_, _LEADER_, _N_O_P_E, _ENTER__, _SPACE__, _TAB____, _L_ALT__, _PRINT__
-  )  ,
+    ______________DVORAK_LEFT___1______________, ______________DVORAK_RIGHT__1______________    ___A____, ___O____, ___E____, ___U____, ___I____, _QUESTN_, _MINUS__, ___D____, ___H____, ___T____, ___N____, ___S____,
+  ),
 
   [_LOWER] = LAYOUT_planck_grid(
-    _F_01___, _F_02___, _F_03___, _F_04___, _DOLLAR_, ________, _PERCENT, _AMPRSND, _ASTERSK, _L_PAREN, _R_PAREN, _HOME___,
-    _F_05___, _F_06___, _F_07___, _F_08___, _HASH___, _COMMA__, _TILDE__, UNDRSCOR, _PLUS___, _L_CURLY, _R_CURLY, _END____,
-    _F_09___, _F_10___, _F_11___, _F_12___, _AT_____, _EXCLM__, _CARET__, _SLASH__, _PIPE___, _L_SQUAR, _R_SQUAR, _PAGE_UP,
-    _CUT____, _COPY___, _PASTE__, WWW_BACK, WWW_FWD_, ________, _N_O_P_E, ________, ________, ________, ________, _PAGE_DN
+    ______________LOWER__LEFT___1______________,  ______________LOWER__RIGHT__1______________
   ),
 
   [_RAISE] = LAYOUT_planck_grid(
-    DB_QUOTE, ________, ________, ________, ________, _tog__0_, _tog__4_, _L_PAREN, _R_PAREN, _AMPRSND, KC_ASTR,  _L_PAREN,
-    ________, ________, ________, ________, ________, ________, ________, _L_SQUAR, _R_SQUAR, _DOLLAR_, KC_PERC,  _CARET__,
-    ________, ________, ________, ________, ________, ________, ________, _L_CURLY, _R_CURLY, _EXCLM__, _AT_____, _HASH___,
-    _ORYX___, _CUT____, _COPY___, _PASTE__, ________, ________, _N_O_P_E, _L_ANGLE, _R_ANGLE, _PIPE___, _R_PAREN, _TILDE__
+    ______________RAISE__LEFT___1______________, ______________RAISE__RIGHT__1______________
   ),
 
   [_ADJUST] = LAYOUT_planck_grid(
-    MUS_PREV, MUS_PLAY, VOLUME_U, ________, ________, _tog__0_, _tog__4_, RGB_TOGG, RGB_SLOW, RGB_BGTD, RGB_CNTD, RGB_HUED,
-    MUS_NEXT, MUS_MUTE, VOLUME_D, ________, ________, ________, ________, RGB_MODE, RGB_FAST, RGB_BGTI, RGB_CNTI, RGB_HUEI,
-    MCROREC1, MCROSTOP, MCROEXE1, ________, ________, ________, ________, ________, ________, ________, ________, ________,
-    MCROREC2, MCROSTOP, MCROEXE2, ________, ________, ________, _N_O_P_E, ________, ________, ________, ________, ________
+    _____________ADJUST__LEFT___1______________, _____________ADJUST__RIGHT__1______________
   ),
 
   [_NUMPAD4] = LAYOUT_planck_grid(
-    NUM_DIVD, NUM_7___, NUM_8___, NUM_9___, _BKSPACE,  _tog_4__, ________, ________, ________, ________, ________, ________,
-    NUM_ASTR, NUM_4___, NUM_5___, NUM_6___, _ESCAPE_,  ________, ________, ________, ________, ________, ________, ________,
-    NUM_PLUS, NUM_1___, NUM_2___, NUM_3___, NUM_COMA,  ________, ________, ________, ________, ________, _UP____,  ________,
-    NUM_MINU, NUM_DOT_, NUM_0___, NUM_EQUL, NUM_ENTER, ________, _N_O_P_E, ________, ________, _LEFT___, _DOWN__,  _RIGHT__
+    _____________NUMPAD__LEFT___1______________, _____________NUMPAD__RIGHT__1______________
   ),
 
   // clang format-on
