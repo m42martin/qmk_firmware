@@ -10,7 +10,7 @@ LTO_ENABLE = yes
 # the following four settings can also greatly help reduce
 # the size of output bin file
 COMMAND_ENABLE = no
-CONSOLE_ENABLE = yes # read using `hid listen`
+CONSOLE_ENABLE = no # read using `hid listen`
 EXTRAKEY_ENABLE = yes # media keys, system volume control
 MOUSEKEY_ENABLE = no
 
@@ -48,3 +48,4 @@ UCIS_ENABLE = no
 UNICODE_ENABLE = yes
 UNICODEMAP_ENABLE = no
 VARIABLE_TRACE = no
+
