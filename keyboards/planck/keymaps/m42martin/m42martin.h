@@ -1,15 +1,14 @@
 #pragma once
 
-#include "wrappers.h"
+#include "wrapper.h"
 
 // define layer names
 
-
 /* #define XXXXXXX KC_NO */
-#undef  XXXXXXX
+#undef  XXXXXX
 // #undef  _______
 // #define ________ KC_NO
-#define _N_O_P_E KC_NO
+#define _N_O_P_E KC_N
 #undef  KC_NO
 
 /*
@@ -230,4 +229,3 @@
 #define m_WHL_m KC_MS_WH_LEFT
 #define m_WHR_m KC_MS_WH_RIGHT
 #define m_WHU_m KC_MS_WH_UP
-

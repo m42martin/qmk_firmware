@@ -21,7 +21,7 @@ GRAVE_ESC_ENABLE = no
 # QMK magic keycodes control things like NKRO toggling,
 # GUI and ALT/CTRL swapping, etc.
 # Disabling it will disable those functions
-MAGIC_ENABLE = yes
+MAGIC_ENABLE = no
 
 # if using sprintf or snprintf, the following saves  ~400 bytes
 # enabling this has its own baggage

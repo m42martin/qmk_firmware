@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "keymap_us_international.h"
 
 #include "m42martin.h"
+#include "wrapper.h"
 
 // Add reconfigurable functions here, for keymap customization
 // This allows for a global, userspace functions, and continued
@@ -41,29 +42,41 @@ enum planck_layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // clang format-off
-
   [_BASE] = LAYOUT_planck_grid(
-    ______________DVORAK_LEFT___1______________, ______________DVORAK_RIGHT__1______________    ___A____, ___O____, ___E____, ___U____, ___I____, _QUESTN_, _MINUS__, ___D____, ___H____, ___T____, ___N____, ___S____,
+    _DVORAK_LEFT____1_,    _DVORAK_RIGHT___1_,
+    _DVORAK_LEFT____2_,    _DVORAK_RIGHT___2_,
+    _DVORAK_LEFT____3_,    _DVORAK_RIGHT___3_,
+    _DVORAK_LEFT____4_,    _DVORAK_RIGHT___4_,
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
-    ______________LOWER__LEFT___1______________,  ______________LOWER__RIGHT__1______________
+    _LOWER__LEFT___1_,    _LOWER__RIGHT__1_,
+    _LOWER__LEFT___2_,    _LOWER__RIGHT__2_,
+    _LOWER__LEFT___3_,    _LOWER__RIGHT__3_,
+    _LOWER__LEFT___4_,    _LOWER__RIGHT__4_,
   ),
 
   [_RAISE] = LAYOUT_planck_grid(
-    ______________RAISE__LEFT___1______________, ______________RAISE__RIGHT__1______________
+    _RAISE__LEFT____1_,   _RAISE__RIGHT__1_,
+    _RAISE__LEFT____2_,   _RAISE__RIGHT__2_,
+    _RAISE__LEFT____3_,   _RAISE__RIGHT__3_,
+    _RAISE__LEFT____4_,   _RAISE__RIGHT__4_,
   ),
 
   [_ADJUST] = LAYOUT_planck_grid(
-    _____________ADJUST__LEFT___1______________, _____________ADJUST__RIGHT__1______________
+    _ADJUST__LEFT____1_,   _ADJUST__RIGHT__1_,
+    _ADJUST__LEFT____2_,   _ADJUST__RIGHT__2_,
+    _ADJUST__LEFT____3_,   _ADJUST__RIGHT__3_,
+    _ADJUST__LEFT____4_,   _ADJUST__RIGHT__4_,
   ),
 
   [_NUMPAD4] = LAYOUT_planck_grid(
-    _____________NUMPAD__LEFT___1______________, _____________NUMPAD__RIGHT__1______________
+    _NUMPAD__LEFT____1_,   _NUMPAD__RIGHT__1_,
+    _NUMPAD__LEFT____2_,   _NUMPAD__RIGHT__2_,
+    _NUMPAD__LEFT____3_,   _NUMPAD__RIGHT__3_,
+    _NUMPAD__LEFT____4_,   _NUMPAD__RIGHT__4_,
   ),
-
   // clang format-on
-
 };
 
 extern rgb_config_t rgb_matrix_config;
@@ -80,47 +93,47 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [4] = { {44,202,255  }, {206,152,219 }, {206,152,219 }, {206,152,219 }, {1,227,242   }, {0,0,0 }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {44,202,255  }, {206,152,219 }, {206,152,219 }, {206,152,219 }, {0,0,0       }, {0,0,0      }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {44,202,255  }, {206,152,219 }, {206,152,219 }, {206,152,219 }, {41,247,242  }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {146,253,161 }, {0,0,0       }, {44,202,255  }, {41,247,242 }, {206,152,219 }, {41,247,242 }, {79,202,255 }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {146,253,161 }, {146,253,161 }, {146,253,161 } },
 };
 
-void set_layer_color(int layer) {
-  for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
-    HSV hsv = {
-      .h = pgm_read_byte(&ledmap[layer][i][0]),
-      .s = pgm_read_byte(&ledmap[layer][i][1]),
-      .v = pgm_read_byte(&ledmap[layer][i][2]),
-    };
-    if (!hsv.h && !hsv.s && !hsv.v) {
-        rgb_matrix_set_color( i, 0, 0, 0 );
-    } else {
-        RGB rgb = hsv_to_rgb( hsv );
-        float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
-        rgb_matrix_set_color( i, f * rgb.r, f * rgb.g, f * rgb.b );
-    }
-  }
-}
+// void set_layer_color(int layer) {
+//   for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
+//     HSV hsv = {
+//       .h = pgm_read_byte(&ledmap[layer][i][0]),
+//       .s = pgm_read_byte(&ledmap[layer][i][1]),
+//       .v = pgm_read_byte(&ledmap[layer][i][2]),
+//     };
+//     if (!hsv.h && !hsv.s && !hsv.v) {
+//         rgb_matrix_set_color( i, 0, 0, 0 );
+//     } else {
+//         RGB rgb = hsv_to_rgb( hsv );
+//         float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+//         rgb_matrix_set_color( i, f * rgb.r, f * rgb.g, f * rgb.b );
+//     }
+//   }
+// }
 
-void rgb_matrix_indicators_user(void) {
-  if (keyboard_config.disable_layer_led) { return; }
-  switch (biton32(layer_state)) {
-    case 0:
-      set_layer_color(0);
-      break;
-    case 1:
-      set_layer_color(1);
-      break;
-    case 2:
-      set_layer_color(2);
-      break;
-    case 3:
-      set_layer_color(3);
-      break;
-    case 4:
-      set_layer_color(4);
-      break;
-   default:
-    if (rgb_matrix_get_flags() == LED_FLAG_NONE)
-        rgb_matrix_set_color_all(0, 0, 0);
-    break;
-  }
-}
+// void rgb_matrix_indicators_user(void) {
+//   if (keyboard_config.disable_layer_led) { return; }
+//   switch (biton32(layer_state)) {
+//     case 0:
+//       set_layer_color(0);
+//       break;
+//     case 1:
+//       set_layer_color(1);
+//       break;
+//     case 2:
+//       set_layer_color(2);
+//       break;
+//     case 3:
+//       set_layer_color(3);
+//       break;
+//     case 4:
+//       set_layer_color(4);
+//       break;
+//    default:
+//     if (rgb_matrix_get_flags() == LED_FLAG_NONE)
+//         rgb_matrix_set_color_all(0, 0, 0);
+//     break;
+//   }
+// }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   /* switch (keycode) { } */
@@ -182,4 +195,3 @@ void leader_end(void) {
 uint32_t layer_state_set_user(uint32_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
-
