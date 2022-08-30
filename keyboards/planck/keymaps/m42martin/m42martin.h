@@ -1,14 +1,9 @@
 #pragma once
 
-#include "wrapper.h"
-
-// define layer names
-
-/* #define XXXXXXX KC_NO */
 #undef  XXXXXX
-// #undef  _______
-// #define ________ KC_NO
-#define _N_O_P_E KC_N
+#undef  _______
+#define ________ KC_NO
+#define _N_O_P_E KC_NO
 #undef  KC_NO
 
 /*
@@ -24,6 +19,16 @@
  */
 
 #define _ORYX___ WEBUSB_PAIR
+
+#define KC_PC_UNDO LCTL(KC_Z)
+#define KC_PC_COPY LCTL(KC_X)
+#define KC_PC_CUT LCTL(KC_C)
+#define KC_PC_PASTE LCTL(KC_V)
+
+#define KC_MAC_UNDO LGUI(KC_Z)
+#define KC_MAC_COPY LGUI(KC_X)
+#define KC_MAC_CUT LGUI(KC_C)
+#define KC_MAC_PASTE LGUI(KC_V)
 
 #define ___A____ KC_A
 #define ___B____ KC_B
@@ -52,7 +57,7 @@
 #define ___Y____ KC_Y
 #define ___Z____ KC_Z
 
-#define _m_SEMI_ MT(MOD_LSHFT, KC_COLON)
+#define _m_SEMI_ MT(MOD_LSFT, KC_COLON)
 
 #define ___0____ KC_0
 #define ___1____ KC_1
@@ -70,7 +75,7 @@
 #define NUM_2___ KC_KP_2
 #define NUM_3___ KC_KP_3
 #define NUM_4___ KC_KP_4
-#define NUM_5____ KC_KP_5
+#define NUM_5___ KC_KP_5
 #define NUM_6___ KC_KP_6
 #define NUM_7___ KC_KP_7
 #define NUM_8___ KC_KP_8
@@ -103,12 +108,7 @@
  * #define _OSLSH_ ROPT(KC_O)
  * #define _AELIG_ ROPT(KC_QUOTE) */
 
-#define _tog__0_ TG(0)
-#define _tog__1_ TG(1) // lower
-#define _tog__2_ TG(2)
-#define _tog__4_ TG(4)
-
-#define _L_ANGLE KC_LEkFT_ANGLE_BRACKET
+#define _L_ANGLE KC_LEFT_ANGLE_BRACKET
 #define _R_ANGLE KC_RIGHT_ANGLE_BRACKET
 
 #define _L_CURLY KC_LEFT_CURLY_BRACE
