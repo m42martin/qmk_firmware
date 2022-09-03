@@ -24,19 +24,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * `-----------------------------------------------------------------------------------'
 */
 
-#include "eeprom.h"
 #include "m42martin.h"
-#include "wrapper.h"
-#include "leader.h"
+// #include "wrapper.h"
+// #include "leader.h"
 // #include "rgb_matrix_ledmaps.h"
-
-// Add reconfigurable functions here, for keymap customization
-// This allows for a global, userspace functions, and continued
-// customization of the keymap.  Use _keymap instead of _user
-// functions in the keymaps
-enum planck_keycodes {
-  RGB_SLD = EZ_SAFE_RANGE,
-};
 
 enum planck_layers {
   _BASE = 0,
@@ -150,10 +141,10 @@ NUM_MINU, NUM_DOT_, NUM_0___, NUM_EQUL, NUM_ENTR,  ________, _N_O_P_E, ________,
   // clang format-on
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  /* switch (keycode) { } */
-  return true;
-}
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//   /* switch (keycode) { } */
+//   return true;
+// }
 
 // uint32_t layer_state_set_user(uint32_t state) {
     // return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);

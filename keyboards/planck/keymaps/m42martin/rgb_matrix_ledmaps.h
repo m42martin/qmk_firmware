@@ -15,7 +15,7 @@
  */
 // #pragma once
 
-#include "config.h"
+// #include "config.h"
 
 // #ifdef RGB_MATRIX_LEDMAPS_ENABLED
 // no association keycode

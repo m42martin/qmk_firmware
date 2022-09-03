@@ -1,14 +1,13 @@
-include "config.h"
+// include "config.h"
 
-// extern rgb_config_t rgb_matrix_config;
-r.gar.gar.g
-void keyboard_post_init_user(void) {
-    // Call the post init code.
-    rgb_matrix_enable();
-    rgblight_enable_noeeprom(); // enables Rgb, without saving settings
-    rgblight_sethsv_noeeprom(180, 255, 255); // sets the color to teal/cyan without saving
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING); // sets mode to Fast breathing without saving
-}
+// // extern rgb_config_t rgb_matrix_config;
+// void keyboard_post_init_user(void) {
+//     // Call the post init code.
+//     rgb_matrix_enable();
+//     rgblight_enable_noeeprom(); // enables Rgb, without saving settings
+//     rgblight_sethsv_noeeprom(180, 255, 255); // sets the color to teal/cyan without saving
+//     rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING); // sets mode to Fast breathing without saving
+// }
 // const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
 //     [0] = { {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0 }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {206,152,219 }, {206,152,219 }, {206,152,219 }, {206,152,219 }, {0,0,0       }, {0,0,0      }, {38,91,239   }, {0,0,0       }, {206,152,219 }, {206,152,219 }, {206,152,219 }, {206,152,219 }, {175,218,204 }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {95,255,213  }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0       }, {0,0,0      }, {117,255,255 }, {8,255,213  }, {0,0,0      }, {175,218,204 }, {0,0,0       }, {43,5,255    }, {175,218,204 }, {117,255,255 }, {0,0,0       } },
 //     [1] = { {218,241,185 }, {218,241,185 }, {218,241,185 }, {218,241,185 }, {143,255,255 }, {0,0,0 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {124,218,204 }, {218,241,185 }, {218,241,185 }, {218,241,185 }, {218,241,185 }, {143,255,255 }, {0,0,0      }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {124,218,204 }, {218,241,185 }, {218,241,185 }, {218,241,185 }, {218,241,185 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {143,255,255 }, {84,218,204  }, {39,255,255  }, {39,255,255 }, {39,255,255  }, {0,0,0      }, {0,0,0      }, {0,0,0       }, {8,218,204   }, {8,218,204   }, {8,218,204   }, {8,218,204   }, {84,218,204  } },
